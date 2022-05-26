@@ -28,4 +28,4 @@ fr = float(sr)
 
 xp = computepay(fh,fr)
 
-print("Pay:",xp)
+print("Pay:", xp)
