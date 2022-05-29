@@ -13,7 +13,6 @@ while True:
             smallest = n
     except ValueError:
                 print("Invalid input")
-                continue
                 
 print ("Maximum is", largest)
 print ("Minimum is", smallest)
