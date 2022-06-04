@@ -14,5 +14,5 @@ while True:
     except ValueError:
                 print("Invalid input")
                 
-print ("Maximum is", largest)
-print ("Minimum is", smallest)
+print ( "Maximum is", largest )
+print ( "Minimum is", smallest )
