@@ -11,7 +11,7 @@ rte = float(input("Enter rate per hour? "))
 p = computepay(hrs, rte)
 print("Pay", p)
 '''
-def computepay(hours, rate):
+def computepay(hours,rate):
   
     if hours > 40 :
         reg = rate * hours
