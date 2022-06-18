@@ -13,4 +13,4 @@ if score <= 1 and score >=0 :
   else :
     print('F')
 else :
-  print( 'ERROR' )
+  print( 'ERROR' ) 
