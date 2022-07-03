@@ -10,4 +10,4 @@ if h > 40 :
 else :
     pay=(r*h)
   
-print( pay )
+print(pay)
