@@ -14,4 +14,4 @@ for i in lst:
     lst1 = lst1+ i
 lst1 = list(set(lst1))
 lst1.sort()        
-print(lst1
+print(lst1)
