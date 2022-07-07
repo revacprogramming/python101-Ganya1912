@@ -11,4 +11,4 @@ for value,count in d.items():
     lst.append(values,count)
 lst.sort()
 for value,count in lst:
-    print(value,count)
+    print( value,count )
