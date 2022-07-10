@@ -12,7 +12,7 @@ while True:
         elif smallest is None or n < smallest:
             smallest = n
     except ValueError:
-                print( "Invalid input" )
+                print("Invalid input")
                 
 print ( "Maximum is",largest )
 print ( "Minimum is",smallest )
