@@ -15,3 +15,4 @@ for line in fh:
 
 for key, val in sorted(counts.items()):
     print (key, val)
+
