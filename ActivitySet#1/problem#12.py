@@ -1,7 +1,7 @@
 # Regular Expressions
 # https://www.py4e.com/lessons/regex
 
-ame = input("Enter file:")
+name = input("Enter file:")
 handle = open(name)
 lst = list()
 for line in handle:
@@ -17,4 +17,4 @@ for word,count in counts.items():
     if bigcount is None or count > bigcount:
         bigcount = count
         bigword = word
-print(bigword , bigcount)
+print( bigword , bigcount )
