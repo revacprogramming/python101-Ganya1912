@@ -17,3 +17,4 @@ lPeople = [('Oz', 25), ('Noor', 31), ('Praise', 22), ('Kerris', 26), ('Louise', 
 for tItem in lPeople:
     sName, iAge = tItem
     add_people(sName, iAge)
+
