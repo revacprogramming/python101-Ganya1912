@@ -13,6 +13,8 @@ for line in fh:
         hours = time[:2]
         counts[hours] = counts.get(hours,0) + 1
 
+      
+
 for key, val in sorted(counts.items()):
     print (key, val)
 
