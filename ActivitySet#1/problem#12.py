@@ -1,21 +1,15 @@
 # Regular Expressions
-# https://www.py4e.com/lessons/regex
 
-name = input("Enter file:")
-handle = open(name)
-lst = list()
-for line in handle:
-    if not line.startswith("From:"):continue
-    line = line.split()
-    lst.append(line[1])
-counts = dict()
-for word in lst:
-	counts[word] = counts.get(word,0) + 1
-bigcount = None
-bigword = None
-for word,count in counts.items():
-    if bigcount is None or count > bigcount:
-        bigcount = count
-        bigword = word
-print( bigword , bigcount )
+import re
 
+hand = open("regex.txt")
+x=list()
+for line in hand:
+     y = re.findall('[0-9]+',line)
+     x = x+y
+     
+sum=0
+for z in x:
+    sum = sum + int(z)
+
+print(sum)

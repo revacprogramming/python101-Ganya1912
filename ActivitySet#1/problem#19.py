@@ -1,34 +1,37 @@
-import sqlite3
-
-# Create a database in RAM
-db = sqlite3.connect(':memory:')
-
-# Get a cursor object
-cursor = db.cursor()
-cursor.execute('''
-    CREATE TABLE Ages ( 
-  name VARCHAR(128), 
-  age INTEGER
-)''')
 
 
-cursor.execute('''DELETE FROM Ages''')
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import ssl
 
-# Insert users
-cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Mara', 28)''')
-cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Otto', 33)''')
-cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Fyn', 31)''')
-cursor.execute('''INSERT INTO Ages (name, age) VALUES ('Neshawn', 17)''')
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
-#Select user
-cursor.execute('''SELECT hex(name || age) AS X FROM Ages ORDER BY X''')
+# url = input('Enter - ')
+url = "http://py4e-data.dr-chuck.net/comments_42.html"
+reqs = urlopen(url, context=ctx)
+html = reqs.read()
+soup = BeautifulSoup(html, "html.parser")
 
-#retrieve the first row
-user1 = cursor.fetchone()
-#Print the first column retrieved(user's name)
-print("The first row in the resulting record set : "+user1[0])
+# Retrieve all of the anchor tags
+tags = soup('span')
+# print(html.getcode())
+# print(html.read())
+# print(html)
+# print(tags)
+lst=list()
+for tag in tags:
+    # Look at the parts of a tag
+    #print('TAG:', tag)
+    #print('URL:', tag.get('href', None))
+    
+    Contents= tag.contents[0]
+    nums=int(Contents)
+    lst.append(nums)
+print(sum(lst))
 
-#Commit changes into database
-db.commit()
-#Close database
-db.close()
+# <br />
+# <br></br>
+#<name>chuck</name>

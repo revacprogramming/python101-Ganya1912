@@ -1,45 +1,18 @@
-import urllib.request, urllib.parse, urllib.error
-import json
-import ssl
+class PartyAnimal:
+   x = 0
 
-api_key = False
+   def __init__(self):
+     print('I am constructed')
 
-if api_key is False:
-    api_key = 42
-    serviceurl = 'http://py4e-data.dr-chuck.net/json?'
-else :
-    serviceurl = 'https://maps.googleapis.com/maps/api/geocode/json?'
+   def party(self) :
+     self.x = self.x + 1
+     print('So far',self.x)
 
-# Ignore SSL certificate errors
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+   def __del__(self):
+     print('I am destructed', self.x)
 
-while True:
-    address = input('Enter location: ')
-    if len(address) < 1: break
-
-    parms = dict()
-    parms['address'] = address
-    if api_key is not False: parms['key'] = api_key
-    url = serviceurl + urllib.parse.urlencode(parms)
-
-    print('Retrieving', url)
-    uh = urllib.request.urlopen(url, context=ctx)
-    data = uh.read().decode()
-    print('Retrieved', len(data), 'characters')
-
-    try:
-        js = json.loads(data)
-    except:
-        js = None
-
-    if not js or 'status' not in js or js['status'] != 'OK':
-        print('==== Failure To Retrieve ====')
-        print(data)
-        continue
-
-    # print(json.dumps(js, indent=4))
-
-    pid = js['results'][0]['place_id']
-    print('Place id ',pid)
+an = PartyAnimal()
+an.party()
+an.party()
+an = 42
+print('an contains',an)

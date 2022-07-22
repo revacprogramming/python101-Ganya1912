@@ -1,20 +1,23 @@
 # Tuples
 
-filename = "dataset/mbox-short.txt"
-name = input("Enter file:")
-if len(name) < 1 : name = "mbox-short.txt"
-fh = open(name)
-counts = dict()
-
+#filename = "dataset/mbox-short.txt"
+"""
+def print_twice(bruce):
+    print(bruce)
+    print(bruce)
+"""
+fname = input("Enter the name of the file: ")
+fh = open(fname)
+d = dict()
 for line in fh:
-    if line.startswith('From ') :
-        words = line.split()
-        time = words[5]
-        hours = time[:2]
-        counts[hours] = counts.get(hours,0) + 1
-
-      
-
-for key, val in sorted(counts.items()):
-    print (key, val)
-
+    if line.startswith("From "):
+        line = line.split()
+        line = line[5]
+        line = line[0:2]
+        d[line] = d.get(line,0)+1
+lst = list()
+for value,count in d.items():
+    lst.append((value,count))
+lst.sort()
+for value,count in lst:
+    print(value,count)

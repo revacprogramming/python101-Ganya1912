@@ -1,5 +1,4 @@
 
-
 class Menu(dict):
     """fill in class definition here"""
 
@@ -26,3 +25,21 @@ except KeyError as e:
 
 b = Bill(m, o)
 print(b)
+"""
+# Loops & Iterators
+
+largest = None
+smallest = None
+
+while True:
+    num = input("Enter a number? ")
+
+    if num == "done":
+        break
+
+    # ...
+
+    print(num)
+
+print("Maximum", largest)
+"""

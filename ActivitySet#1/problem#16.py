@@ -1,20 +1,24 @@
+
+
 # Databases
 # https://www.py4e.com/lessons/database
 import sqlite3
-conn = sqlite3.connect(':memory:')
-c = conn.cursor()
-c.execute("""CREATE TABLE Ages(
-             name VARCHAR(128),
-             age INTEGER
-             )"""
-         )
-def add_people(sName, iAge):
-    with conn:
-        c.execute("INSERT INTO Ages VALUES (:name, :age)", {'name':sName, 'age':iAge})
 
+conn = sqlite3.connect('music.sqlite')
+cur = conn.cursor()
 
-lPeople = [('Oz', 25), ('Noor', 31), ('Praise', 22), ('Kerris', 26), ('Louise', 19), ('Ismaeel', 17)]
-for tItem in lPeople:
-    sName, iAge = tItem
-    add_people(sName, iAge)
+cur.execute('INSERT INTO Tracks (title, plays) VALUES (?, ?)',
+    ('Thunderstruck', 20))
+cur.execute('INSERT INTO Tracks (title, plays) VALUES (?, ?)',
+    ('My Way', 15))
+conn.commit()
 
+print('Tracks:')
+cur.execute('SELECT title, plays FROM Tracks')
+for row in cur:
+     print(row)
+
+cur.execute('DELETE FROM Tracks WHERE plays < 100')
+conn.commit()
+
+cur.close()
